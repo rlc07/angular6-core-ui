@@ -10,10 +10,15 @@ export const navItems = [
   },
   {
     title: true,
-    name: 'Theme'
+    name: 'Escola'
   },
   {
     name: 'Alunos',
+    url: '/students',
+    icon: 'icon-people'
+  },
+  {
+    name: 'Cores',
     url: '/theme/colors',
     icon: 'icon-people'
   },

@@ -53,6 +53,10 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: './views/widgets/widgets.module#WidgetsModule'
+      },
+      {
+        path: 'students',
+        loadChildren: './components/students/students.module#StudentsModule'
       }
     ]
   }
