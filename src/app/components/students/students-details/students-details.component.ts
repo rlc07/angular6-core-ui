@@ -1,42 +1,101 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
+import {MenuItem} from 'primeng/api';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-students-details',
   templateUrl: './students-details.component.html',
-  styleUrls: ['./students-details.component.scss']
+  styles: [`
+  .ui-steps .ui-steps-item {
+      width: 20%;
+  }
+
+  .ui-steps.steps-custom {
+      margin-bottom: 30px;
+  }
+
+  .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link {
+      height: 10px;
+      padding: 0 1em;
+  }
+
+  .ui-steps.steps-custom .ui-steps-item .ui-steps-number {
+      background-color: #4dbd74;
+      color: #FFFFFF;
+      display: inline-block;
+      width: 36px;
+      border-radius: 50%;
+      margin-top: -14px;
+      margin-bottom: 10px;
+  }
+
+  .ui-steps.steps-custom .ui-steps-item .ui-steps-title {
+      color: #555555;
+  }
+
+  .margin-button{
+    margin: 2px;
+ }
+`],
+  encapsulation: ViewEncapsulation.None
 })
 export class StudentsDetailsComponent implements OnInit {
 
+  items: MenuItem[];
+  activeIndex = 0;
 
-  @Input() title: string;
-  @Input() hidden = false;
-  @Input() isValid = true;
-  @Input() showNext = true;
-  @Input() showPrev = true;
-
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onNext: EventEmitter<any> = new EventEmitter<any>();
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onPrev: EventEmitter<any> = new EventEmitter<any>();
-  // tslint:disable-next-line:no-output-on-prefix
-  @Output() onComplete: EventEmitter<any> = new EventEmitter<any>();
-
-  private _isActive = false;
-  isDisabled = true;
-
-  @Input('isActive')
-  set isActive(isActive: boolean) {
-    this._isActive = isActive;
-    this.isDisabled = false;
-  }
-
-  get isActive(): boolean {
-    return this._isActive;
-  }
-  
   constructor() { }
 
   ngOnInit() {
-  }
+    this.items = [{
+            label: 'Dados Pessoais',
+            command: (event: any) => {
+                this.activeIndex = 0;
+            }
+        },
+        {
+            label: 'Endereço',
+            command: (event: any) => {
+                this.activeIndex = 1;
+            }
+        },
+        {
+            label: 'Dados do Responsável',
+            command: (event: any) => {
+                this.activeIndex = 2;
+            }
+        },
+        {
+          label: 'Dados Profissionais',
+          command: (event: any) => {
+              this.activeIndex = 3;
+          }
+        },
+        {
+            label: 'Confirmar Cadastro',
+            command: (event: any) => {
+                this.activeIndex = 4;
+            }
+        }
+    ];
+}
 
+
+ next(event) {
+    console.log(event)
+
+     this.activeIndex++;
+ }
+
+ back() {
+    this.activeIndex--;
+}
+
+onSubmit(event) {
+    console.log(this.f)
+}
+test(event){
+    console.log("gol")
+}
 }
