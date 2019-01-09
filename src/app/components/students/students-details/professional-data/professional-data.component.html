@@ -1,10 +1,13 @@
 <div class="row">
 
-  <div class="col col-md-4">
+  <div class="col col-md-6">
     <div class="form-group">
-      <label>Posição</label>
-      <p-multiSelect [options]="cities" [style]="{width: '20em'}"></p-multiSelect>
-      <p>Selected Cars: {{selectedCities1}}</p>
+      <label>Posição</label><br>
+      <p-multiSelect defaultLabel="Selecionar posição" 
+                     [options]="positions"
+                     [style]="{width: '30em', height: '3em'}"
+                     formControlName="selectedPosition">
+      </p-multiSelect>
     </div>
   </div>
 
@@ -17,14 +20,8 @@
       </select>
     </div>
   </div>
-
-  <div class="col col-md-2 margin-button-input">
-      <button class="btn btn-success" (click)="next()">Adicionar</button>
-  </div>
-
 </div>
 <hr>
 
 <div class="row  col-md-12">
-  <app-table-responsible></app-table-responsible>
 </div>

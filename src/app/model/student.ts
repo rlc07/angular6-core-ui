@@ -9,4 +9,5 @@ export class Student {
     dateOfBirth: string;
     category: string;
     age: number;
+    email: string;
 }

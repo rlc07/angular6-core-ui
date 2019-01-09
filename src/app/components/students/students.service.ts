@@ -8,6 +8,7 @@ import { Student } from './../../model/student';
 export class StudentsService {
 
   studentsList: Student[];
+  student: Student;
 
   constructor() { }
 
@@ -36,4 +37,47 @@ export class StudentsService {
     return this.studentsList;
 
   }
+
+  getItemsSteps(activeIndex) {
+    return [{
+      label: 'Dados Pessoais',
+      command: (event: any) => {
+          activeIndex = 0;
+      }
+  },
+  {
+      label: 'Endereço',
+      command: (event: any) => {
+          activeIndex = 1;
+      }
+  },
+  {
+      label: 'Dados do Responsável',
+      command: (event: any) => {
+          activeIndex = 2;
+      }
+  },
+  {
+      label: 'Dados Profissionais',
+      command: (event: any) => {
+          activeIndex = 3;
+      }
+  },
+  {
+      label: 'Confirmar Cadastro',
+      command: (event: any) => {
+          activeIndex = 4;
+      }
+  }
+  ];
+  }
+
+  setValues(studentData: any): Student {
+   this.student.name = studentData.name;
+   this.student.documentType = studentData.documentType;
+   this.student.document = studentData.document;
+   this.student.dateOfBirth = studentData.dateOfBirth;
+   this.student.email = studentData.email;
+   return this.student;
+}
 }

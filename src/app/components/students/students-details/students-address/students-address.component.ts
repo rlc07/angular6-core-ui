@@ -2,13 +2,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-address',
-  templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss']
+  selector: 'app-students-address',
+  templateUrl: './students-address.component.html',
+  styleUrls: ['./students-address.component.scss']
 })
-export class AddressComponent implements OnInit {
+export class StudentsAddressComponent implements OnInit {
 
-  @Output() address = new EventEmitter();
+  @Output() studentAddress = new EventEmitter();
   form: FormGroup;
   subject = false;
 
@@ -29,7 +29,8 @@ export class AddressComponent implements OnInit {
 
   get f() { return this.form.controls; }
 
-  getAddress() {
-    this.address.emit(this.form);
+  forNext() {
+    this.studentAddress.emit(this.form);
   }
+
 }

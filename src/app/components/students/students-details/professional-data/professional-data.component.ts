@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
+import { StudentsProfessionalDataService } from './students-professional-data.service';
 
 @Component({
   selector: 'app-professional-data',
@@ -8,20 +9,14 @@ import { SelectItem } from 'primeng/api';
 })
 export class ProfessionalDataComponent implements OnInit {
 
-  cities: SelectItem[];
+  positions: SelectItem[];
 
-  selectedCities: any[];
+  selectedPosition: any[];
 
-  constructor() { }
+  constructor(private _service: StudentsProfessionalDataService) { }
 
   ngOnInit() {
-
-    this.cities = [
-      {label: 'New York', value: {id: 1, name: 'New York', code: 'NY'}},
-      {label: 'Rome', value: {id: 2, name: 'Rome', code: 'RM'}},
-      {label: 'London', value: {id: 3, name: 'London', code: 'LDN'}},
-      {label: 'Istanbul', value: {id: 4, name: 'Istanbul', code: 'IST'}}
-  ];
+    this.positions = this._service.getPositions();
   }
 
 }

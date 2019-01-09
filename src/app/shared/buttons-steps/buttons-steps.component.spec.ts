@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableResponsibleComponent } from './table-responsible.component';
+import { ButtonsStepsComponent } from './buttons-steps.component';
 
-describe('TableResponsibleComponent', () => {
-  let component: TableResponsibleComponent;
-  let fixture: ComponentFixture<TableResponsibleComponent>;
+describe('ButtonsStepsComponent', () => {
+  let component: ButtonsStepsComponent;
+  let fixture: ComponentFixture<ButtonsStepsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableResponsibleComponent ]
+      declarations: [ ButtonsStepsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableResponsibleComponent);
+    fixture = TestBed.createComponent(ButtonsStepsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import {MenuItem} from 'primeng/api';
-import { FormGroup } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
+import { StudentsService } from './../students.service';
+import { Student } from '../../../model/student';
 
 @Component({
-  selector: 'app-students-details',
-  templateUrl: './students-details.component.html',
-  styles: [`
+    selector: 'app-students-details',
+    templateUrl: './students-details.component.html',
+    styles: [`
   .ui-steps .ui-steps-item {
       width: 20%;
   }
@@ -38,64 +39,35 @@ import { FormGroup } from '@angular/forms';
     margin: 2px;
  }
 `],
-  encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class StudentsDetailsComponent implements OnInit {
 
-  items: MenuItem[];
-  activeIndex = 0;
+    items: MenuItem[];
+    activeIndex = 3;
+    student: Student;
 
-  constructor() { }
+    constructor(private _studentService: StudentsService) { }
 
-  ngOnInit() {
-    this.items = [{
-            label: 'Dados Pessoais',
-            command: (event: any) => {
-                this.activeIndex = 0;
-            }
-        },
-        {
-            label: 'Endereço',
-            command: (event: any) => {
-                this.activeIndex = 1;
-            }
-        },
-        {
-            label: 'Dados do Responsável',
-            command: (event: any) => {
-                this.activeIndex = 2;
-            }
-        },
-        {
-          label: 'Dados Profissionais',
-          command: (event: any) => {
-              this.activeIndex = 3;
-          }
-        },
-        {
-            label: 'Confirmar Cadastro',
-            command: (event: any) => {
-                this.activeIndex = 4;
-            }
-        }
-    ];
-}
+    ngOnInit() {
+        this.items = this._studentService.getItemsSteps(this.activeIndex);
+    }
 
+    /** LISTENERS OUTPUT  */
+    currentIndexActive(event) {
+        this.activeIndex = event;
+    }
 
- next(event) {
-    console.log(event)
+   async personalData(event) {
+        this.activeIndex++;
+        this.student = await this._studentService.setValues(event.value);
+    }
 
-     this.activeIndex++;
- }
+   async studentAddress(event) {
+        this.activeIndex++;
+    }
 
- back() {
-    this.activeIndex--;
-}
-
-onSubmit(event) {
-    console.log(this.f)
-}
-test(event){
-    console.log("gol")
-}
+   async outputdataResponsibles(event) {
+        this.activeIndex++;
+   }
 }

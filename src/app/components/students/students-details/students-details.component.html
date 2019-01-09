@@ -1,36 +1,30 @@
 <app-card-container title="Detalhes do Aluno" icon="icon-user">
   <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
   <hr>
-  <!-- Form with photo - data personal-->
-  <div class="row" *ngIf="activeIndex == 0">
-    <div class="col col-md-3">
-      <app-card-photo cardSize="12"></app-card-photo>
+    <!-- Form with photo - data personal-->
+    <div class="row" *ngIf="activeIndex == 0">
+      <div class="col col-md-3">
+        <app-card-photo cardSize="12"></app-card-photo>
+      </div>
+      <div class="col-md-9">
+        <app-students-personal-data (personalData)="personalData($event)"></app-students-personal-data>
+      </div>
     </div>
-    <div class="col-md-9">
-      <app-students-personal-data #p (personalData)="next($event)"></app-students-personal-data>
+
+    <!-- Form address -->
+    <div *ngIf="activeIndex == 1">
+      <app-students-address (studentAddress)="studentAddress($event)"></app-students-address>
     </div>
-  </div>
 
-  <!-- Form address -->
-  <div *ngIf="activeIndex == 1">
-    <app-address></app-address>
-  </div>
-
-   <!-- Form data responsible -->
-   <div *ngIf="activeIndex == 2">
-     <app-data-responsible></app-data-responsible>
+    <!-- Form data responsible -->
+    <div *ngIf="activeIndex == 2">
+      <app-data-responsible (outputdataResponsibles)="outputdataResponsibles($event)"></app-data-responsible>
     </div>
 
     <!-- Form data professional -->
-   <div *ngIf="activeIndex == 3">
-    <app-professional-data></app-professional-data>
-   </div>
-    
+    <div *ngIf="activeIndex == 3">
+      <app-professional-data></app-professional-data>
+    </div>
+  <app-buttons-steps [activeIndex]="activeIndex" (currentIndexActive)="currentIndexActive($event)"></app-buttons-steps>
 
-  <hr>
-  <div class="float-md-right">
-    <button *ngIf="activeIndex != 0" class="btn btn-dark margin-button" (click)="back()">Voltar</button>
-    <button *ngIf="activeIndex != 4" class="btn btn-primary margin-button" (click)="next(p)">Próximo</button>
-    <button *ngIf="activeIndex == 4" class="btn btn-success margin-button" (click)="next()">Salvar</button>
-  </div>
 </app-card-container>

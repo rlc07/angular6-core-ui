@@ -1,10 +1,10 @@
-<div >
+<div [formGroup]="form">
 
   <div class="row"> 
     <div class="col col-md-2">
       <div class="form-group">
         <label>CEP</label>
-        <input type="text" class="form-control">
+        <input formControlName="zipcode" type="text" class="form-control">
       </div>
     </div>
   </div>
@@ -14,21 +14,21 @@
   <div class="col col-md-6">
     <div class="form-group">
       <label>Rua</label>
-      <input type="text" class="form-control">
+      <input formControlName="street" type="text" class="form-control">
     </div>
   </div>
   
   <div class="col col-md-4">
       <div class="form-group">
         <label>Bairro</label>
-        <input type="text" class="form-control">
+        <input formControlName="district" type="text" class="form-control">
       </div>
     </div>
   
   <div class="col col-md-2">
       <div class="form-group">
         <label>Número</label>
-        <input type="text" class="form-control">
+        <input formControlName="number" type="text" class="form-control">
       </div>
     </div>
   
@@ -39,24 +39,27 @@
     <div class="col col-md-4">
       <div class="form-group">
         <label>Cidade</label>
-        <input type="text" class="form-control">
+        <input formControlName="city" type="text" class="form-control">
       </div>
     </div>
   
     <div class="col col-md-4">
       <div class="form-group">
         <label>Estado</label>
-        <input type="text" class="form-control">
+        <input formControlName="state" type="text" class="form-control">
       </div>
     </div>
   
     <div class="col col-md-4">
         <div class="form-group">
           <label>Complemento</label>
-          <input type="text" class="form-control">
+          <input formControlName="complement" type="text" class="form-control">
         </div>
     </div>
   
   </div>
+</div>
 
+<div class="margin-btn-next float-md-right">
+  <button class="btn btn-primary margin-button" (click)="forNext()">Próximo</button>
 </div>

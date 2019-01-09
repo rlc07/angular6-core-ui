@@ -3,32 +3,28 @@
 
     <div class="form-group has-danger">
       <label class="form-control-label" id="name">Nome Completo <app-label-required></app-label-required></label>
-      <input type="text" class="form-control form-control-danger" formControlName="name" id="name" [ngClass]="{ 'is-invalid': subject && f.name.errors }">
+      <input type="text" pInputText size="43" class="form-control-danger" formControlName="name" id="name" [ngClass]="{ 'is-invalid': subject && f.name.errors }">
 
       <app-message-validate [control]="form.get('name')" label="Nome" [subject]="subject"></app-message-validate>
 
-    </div>
-
-
-    <div class="form-group">
-      <label>Tipo de documento</label>
-      <select class="form-control" formControlName="documentType" id="documentType">
-        <option>CPF</option>
-        <option>RG</option>
-      </select>
-    </div>
+    </div> 
 
     <div class="form-group">
+      <label>Tipo de documento</label><br>
+      <p-selectButton formControlName="documentType" [options]="documentTypes"></p-selectButton>
+    </div>
+
+    <div class="form-group line-up-phone">
       <label>Telefone</label>
       <br>
-      <p-inputMask  mask="(99) 99999-9999" inputId="phone" formControlName="phone"></p-inputMask>
+      <p-inputMask formControlName="phone" size="43" mask="(99) 99999-9999" inputId="phone" formControlName="phone"></p-inputMask>
     </div>
 
   </div>
 
   <div class="col">
 
-    <div class="form-group">
+    <div class="form-group has-danger ">
       <label>Data de Nascimento <app-label-required></app-label-required></label>
       <br>
       <p-calendar 
@@ -40,16 +36,23 @@
       inputId="dateOfBirth"
       formControlName="dateOfBirth">
       </p-calendar> 
+
+      <app-message-validate [control]="form.get('dateOfBirth')" label="Data de Nascimento" [subject]="subject"></app-message-validate>
+
     </div>
 
     <div class="form-group">
-      <label>N° do Documento</label>
-      <input type="text" class="form-control" formControlName="document" id="document">
+      <label>N° do Documento</label><br>
+      <input type="text" pInputText size="42" class="form-control-danger" formControlName="documentNumber" >
     </div>
 
     <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" formControlName="email" id="email">
+      <label>Email</label><br>
+      <input type="text" pInputText size="42" class="form-control-danger" formControlName="email" id="email" >
     </div>
   </div>
+</div>
+
+<div class="float-md-right">
+  <button class="btn btn-primary margin-button" (click)="forNext()">Próximo</button>
 </div>
